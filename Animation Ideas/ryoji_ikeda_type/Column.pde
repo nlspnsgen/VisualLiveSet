@@ -16,7 +16,16 @@ class Column {
   public void display() {
     for (int i=0; i<numberOfrects; i++) {
       fill(colorRange.getColor());
-      rect(x, random(height), rectWidth, rectHeight);
+      float rand = random(10);
+      if(rand >= 5){
+        new Square((int ) x+rectWidth/2, (int) random(height), rectWidth, rectHeight, colorRange).display();
+      } 
+      if(5 > rand && rand <= 7){
+         new Square((int ) x+rectWidth/2, (int) random(height), rectWidth, rectHeight, blue).display();
+      }
+      if (rand > 7) {
+       new Square((int ) x+rectWidth/2, (int) random(height), rectWidth, rectHeight, red).display();
+      }
     }
   }
 }
