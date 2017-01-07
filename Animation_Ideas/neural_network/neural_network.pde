@@ -34,7 +34,6 @@ void draw(){
   for (int i = 0; i < count; i++){
     stroke(0);
     int guess = ptron.feedForward(training[i].inputs);
-
     if (guess < 0 ) noFill();
     else fill(0);
     ellipse(training[i].inputs[0], training[i].inputs[1], 8, 8);
