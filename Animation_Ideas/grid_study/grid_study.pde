@@ -1,28 +1,27 @@
+ColorRange red = new ColorRange(181, 193, 7, 24, 9, 34);
+ColorRange blue = new ColorRange(9, 20, 66, 77, 144, 166);
+ColorRange gray = new ColorRange(128, 129, 128, 144, 130, 144);
+ColorRange black = new ColorRange(12, 24, 15, 27, 8, 20);
+ColorRange white = new ColorRange(208, 235, 220, 243, 210, 241);
 
 CircleCell circleCell;
-CircleCell circleCell2;
-CircleCell circleCell3;
-CircleCell circleCell4;
+MonochromeCell monochromeCell;
+OuterSquareCell outerSquareCell;
+IkedaCell ikedaCell1;
 
 void setup(){
 	size(600,600);
-
 	circleCell = new CircleCell(0, width/2, 0, height/2, 50);
-	circleCell2 = new CircleCell(width/2, width, 0, height/2, 50);
-	circleCell3 = new CircleCell(0, width/2, height/2, height, 50);
-	circleCell4 = new CircleCell(width/2, width, height/2, height, 50);
-
-	//noLoop();
+	monochromeCell = new MonochromeCell(width/2, width, 0, height/2, black.getColor());
+	outerSquareCell = new OuterSquareCell(0, width/2, height/2, height);
+	ikedaCell1 = new IkedaCell(width/2, width, height/2, height);
 }
 
 void draw(){
-	background(255);
-	circleCell.move();
-	circleCell2.move();
-	circleCell3.move();
-	circleCell4.move();
+	background(white.getColor());
+	circleCell.setColors(blue.getColor());
+	ikedaCell1.display();
 	circleCell.display();	
-	circleCell2.display();
-	circleCell3.display();
-	circleCell4.display();
+	monochromeCell.display();
+	outerSquareCell.display();
 }
