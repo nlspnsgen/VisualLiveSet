@@ -3,9 +3,9 @@ class MonochromeCell extends Cell{
 	int rightX;
 	int topY;
 	int bottomY;
-	color bgColor;
+	ColorRange bgColor;
 
-	MonochromeCell(int leftX, int rightX, int topY, int bottomY, color bgColor){
+	MonochromeCell(int leftX, int rightX, int topY, int bottomY, ColorRange bgColor){
 		this.leftX = leftX;
 		this.rightX = rightX;
 		this.topY = topY;
@@ -14,13 +14,11 @@ class MonochromeCell extends Cell{
 	}
 
 	public void display(){
-		fill(bgColor);
+		fill(bgColor.getColor());
 		rect(leftX, topY, rightX-leftX, bottomY-topY);
 	}
 	
-	public void move(){}
-
-	public void setColors(color... c){
+	public void setColors(ColorRange... c){
 		this.bgColor = c[1];
 	}
 }

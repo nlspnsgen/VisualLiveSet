@@ -5,24 +5,31 @@ class IkedaCell extends Cell {
 	int bottomY;
 	int rectHeight;
 	int numberOfRects;
+	ArrayList<ColorRange> colors = new ArrayList<ColorRange>();
 
-	IkedaCell(int leftX, int rightX, int topY, int bottomY){
+	IkedaCell(int leftX, int rightX, int topY, int bottomY, ColorRange initialColor){
 		this.leftX = leftX;
 		this.rightX = rightX;
 		this.topY = topY;
 		this.bottomY = bottomY;
 		this.rectHeight = 30;
-		this.numberOfRects = 10;
+		this.numberOfRects = 4;
+		colors.add(initialColor);
 	}
 
 	public void display(){
 		for (int i = 0; i< numberOfRects; i++){
-			fill(0);
+			int colorIndex = (int) random(colors.size());
+			fill(colors.get(colorIndex).getColor());
 			rect(leftX, bottomY - topY + random(bottomY - topY), rightX - leftX, random(rectHeight));
 		}
 	}
-	public void move(){}
-	public void setColors(color... c){}
+	public void setColors(ColorRange... c){
+		colors.clear();
+		for (ColorRange colorRange : c){
+			colors.add(colorRange);
+		}
+	}
 	public void setHeight(int rectHeight){
 		this.rectHeight = rectHeight;
 	}

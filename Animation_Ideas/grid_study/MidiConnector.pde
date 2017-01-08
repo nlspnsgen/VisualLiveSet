@@ -1,7 +1,4 @@
-import themidibus.*;
-
-class MidiConnector{
-	MidiBus myBus;
-
-	
+void noteOn(int channel, int pitch, int velocity) {
+	println("channel: "+channel);
+	println("pitch^: "+pitch);
 }

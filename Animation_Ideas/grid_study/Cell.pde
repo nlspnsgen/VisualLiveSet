@@ -4,5 +4,5 @@ abstract class Cell {
 	int bottomY;
 	int topY;
 	abstract void display();
-	abstract void setColors(color... c);
+	abstract void setColors(ColorRange... c);
 }

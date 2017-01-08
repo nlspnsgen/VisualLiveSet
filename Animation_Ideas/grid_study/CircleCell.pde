@@ -6,15 +6,15 @@ class CircleCell extends Cell	{
 	PVector location;
 	PVector velocity;
 	int diameter;
-	color circleColor;
+	ColorRange circleColor;
 
-	CircleCell(int leftX, int rightX, int topY, int bottomY, int diameter){
+	CircleCell(int leftX, int rightX, int topY, int bottomY, int diameter, ColorRange circleColor){
 		this.leftX = leftX;
 		this.rightX = rightX;
 		this.topY = topY;
 		this.bottomY = bottomY;
 		this.diameter = diameter;
-		this.circleColor = color(0);
+		this.circleColor = circleColor;
 		int x = leftX + (rightX - leftX)/2;
 		int y = topY + (bottomY - topY)/2;
 		location = new PVector(x, y);
@@ -24,7 +24,7 @@ class CircleCell extends Cell	{
 	public void display(){
 		ellipseMode(CENTER);
 		noStroke();
-		fill(circleColor);
+		fill(circleColor.getColor());
 		ellipse(location.x, location.y, diameter, diameter);
 	}
 
@@ -37,7 +37,17 @@ class CircleCell extends Cell	{
 			velocity.y = velocity.y *-1;
 		}
 	}
-	public void setColors(color... c){
+
+	public void stop(){
+		velocity.x = 0;
+		velocity.y = 0;
+	}
+
+	public void reset(){
+		location.x = leftX + (rightX - leftX)/2;
+		location.y = topY + (bottomY - topY)/2;
+	}
+	public void setColors(ColorRange... c){
 		circleColor = c[0];
 	}
 }
