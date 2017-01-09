@@ -14,11 +14,12 @@ class MonochromeCell extends Cell{
 	}
 
 	public void display(){
+		rectMode(CORNER);
 		fill(bgColor.getColor());
 		rect(leftX, topY, rightX-leftX, bottomY-topY);
 	}
 	
 	public void setColors(ColorRange... c){
-		this.bgColor = c[1];
+		this.bgColor = c[0];
 	}
 }

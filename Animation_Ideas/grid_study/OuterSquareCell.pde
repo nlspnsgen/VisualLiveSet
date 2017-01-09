@@ -16,6 +16,7 @@ class OuterSquareCell extends Cell{
 		diameter = 20;
 	}
 	void display(){
+		rectMode(CORNER);
 		//outer rectangle
 		fill(outerColor.getColor());
 		rect(leftX, topY, rightX-leftX, bottomY-topY);

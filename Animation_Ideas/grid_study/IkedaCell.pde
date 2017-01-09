@@ -18,6 +18,7 @@ class IkedaCell extends Cell {
 	}
 
 	public void display(){
+		rectMode(CORNER);
 		for (int i = 0; i< numberOfRects; i++){
 			int colorIndex = (int) random(colors.size());
 			fill(colors.get(colorIndex).getColor());
