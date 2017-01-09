@@ -3,15 +3,16 @@ class Ring{
 	int rightX;
 	int topY;
 	int bottomY;
-	int diameter;
+	int diameter ;
 	int strokeWidth;
 	ColorRange colorRange;
 
-	Ring(int leftX,int rightX, int topY, int bottomY, int strokeWidth, ColorRange colorRange){
+	Ring(int leftX,int rightX, int topY, int bottomY, int diameter, int strokeWidth, ColorRange colorRange){
 		this.leftX = leftX;
 		this.rightX = rightX;
 		this.topY = topY;
 		this.bottomY = bottomY;
+		this.diameter = diameter;
 		this.strokeWidth = strokeWidth;
 		this.colorRange = colorRange;
 	}
@@ -29,7 +30,7 @@ class Ring{
 	}
 
 	void expand(int expandBy){
-		this.diameter += expandBy;
+		diameter = diameter + expandBy;
 	}
 
 	void setColor(ColorRange colorRange){
@@ -40,7 +41,7 @@ class Ring{
 		int maxWidth = ((rightX-leftX)*2);
 		int maxHeight = ((bottomY - topY)*2);
 
-		if ((diameter >= maxWidth) || (diameter >= maxHeight) || (diameter < 0)){
+		if ((diameter > maxWidth) || (diameter > maxHeight) || (diameter < 0)){
 			return true;
 		}
 		else return false;

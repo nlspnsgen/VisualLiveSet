@@ -21,5 +21,4 @@ void draw() {
     Linie l = it.next();
     l.display();
   }
-  //save("12.jpg");
 }

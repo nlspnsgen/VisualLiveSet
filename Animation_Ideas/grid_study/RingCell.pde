@@ -7,6 +7,8 @@ class RingCell extends Cell{
 	int circleWidth;
 	RingCollection ringCollection = new RingCollection(5);
 	int spaceBetweenRings;
+	ColorRange colorOfRingToBeAdded = blue;
+	int iterator;
 
 	RingCell(int leftX, int rightX, int topY, int bottomY){
 			this.leftX = leftX;
@@ -16,21 +18,40 @@ class RingCell extends Cell{
 			this.diameter = 10;
 			this.circleWidth = 10;
 			this.spaceBetweenRings = 0;
+			iterator = 0;
 	}
 
 	void display(){
-		ColorRange cr;
-		if (random(10)<5){ cr = black;}
-		else {cr = red;}
-		if (spaceBetweenRings > 10){
-			ringCollection.add(new Ring(leftX, rightX, topY, bottomY, 10, cr));
-			spaceBetweenRings = 0;
-		}
-		spaceBetweenRings++;
+		animateForward();
+	}
+
+	void animateForward(){
+		addRingToCollection(0);
 		ringCollection.animateForward();
 	}
 
-	void setColors(ColorRange... c){
+	void animateBackward(){
+		addRingToCollection((rightX-leftX)*2);
+		ringCollection.animateBackward();
+	}
 
+	void addRingToCollection(int initialDiameter){
+		if (spaceBetweenRings > 10){
+			generateColorOfRingToBeAdded();
+			ringCollection.add(new Ring(leftX, rightX, topY, bottomY, initialDiameter, 10, colorOfRingToBeAdded));
+			spaceBetweenRings = 0;
+		}
+		spaceBetweenRings++;
+	}
+
+	void generateColorOfRingToBeAdded(){
+		if(iterator == 1) colorOfRingToBeAdded = black;
+		if(iterator == 2) colorOfRingToBeAdded = red;
+		if(iterator == 3) colorOfRingToBeAdded = blue;
+		if(iterator > 2) iterator = 0;
+		iterator++;
+	}
+	
+	void setColors(ColorRange... c){
 	}
 }
