@@ -1,4 +1,5 @@
 import themidibus.*;
+import java.util.Iterator;
 
 ColorRange red = new ColorRange(181, 193, 7, 24, 9, 34);
 ColorRange blue = new ColorRange(9, 20, 66, 77, 144, 166);
@@ -20,19 +21,18 @@ void setup(){
 	circleCell = new CircleCell(0, width/2, 0, height/2, 50, red);
 	parametricCell = new ParametricCell(width/2, width, 0, height/2);
 	blackCrossCell = new BlackCrossCell(0, width/2, height/2, height);
-	ringCell = new RingCell(width/2, width, height/2, height, white, black);
+	ringCell = new RingCell(0, width, 0, height);
 	
 }
 
 void draw(){
 	background(white.getColor());
 	ringCell.display();
-	circleCell.display();	
-	parametricCell.display();
-	blackCrossCell.display();
-	circleCell.move();
-	blackCrossCell.animate();
-	ringCell.animateBackwards();
+	// circleCell.display();	
+	// parametricCell.display();
+	// blackCrossCell.display();
+	// circleCell.move();
+	// blackCrossCell.animate();
 }
 
 void mouseClicked(){

@@ -28,14 +28,19 @@ class Ring{
 		this.diameter = diameter;
 	}
 
+	void expand(int expandBy){
+		this.diameter += expandBy;
+	}
+
 	void setColor(ColorRange colorRange){
 		this.colorRange = colorRange;
 	}
 
 	boolean isDead(){
-		int maxWidth = ((rightX-leftX)-strokeWidth);
-		int maxHeight = ((bottomY - topY)-strokeWidth);
-		if ((diameter >= maxWidth) || (diameter >= maxHeight) || (diameter <= strokeWidth)){
+		int maxWidth = ((rightX-leftX)*2);
+		int maxHeight = ((bottomY - topY)*2);
+
+		if ((diameter >= maxWidth) || (diameter >= maxHeight) || (diameter < 0)){
 			return true;
 		}
 		else return false;
