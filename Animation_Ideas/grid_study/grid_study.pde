@@ -11,8 +11,7 @@ MidiBus myBus;
 CircleCell circleCell;
 ParametricCell parametricCell;
 BlackCrossCell blackCrossCell;
-IkedaCell ikedaCell;
-// MidiConnector midiConnector = new MidiConnector();
+RingCell ringCell;
 
 void setup(){
 	size(600,600);
@@ -21,19 +20,19 @@ void setup(){
 	circleCell = new CircleCell(0, width/2, 0, height/2, 50, red);
 	parametricCell = new ParametricCell(width/2, width, 0, height/2);
 	blackCrossCell = new BlackCrossCell(0, width/2, height/2, height);
-	ikedaCell = new IkedaCell(width/2, width, height/2, height, black);
+	ringCell = new RingCell(width/2, width, height/2, height, white, black);
 	
-	ikedaCell.setColors(red, black);
 }
 
 void draw(){
 	background(white.getColor());
-	ikedaCell.display();
+	ringCell.display();
 	circleCell.display();	
 	parametricCell.display();
 	blackCrossCell.display();
 	circleCell.move();
 	blackCrossCell.animate();
+	ringCell.animateBackwards();
 }
 
 void mouseClicked(){
