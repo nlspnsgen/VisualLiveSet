@@ -18,6 +18,7 @@ class BlackCrossCell extends Cell{
 		}
 
 	void display(){
+		noStroke();
 		fill(black.getColor());
 		rectMode(CENTER);
 		rect(leftX+(rightX-leftX)/2, topY+(bottomY-topY)/2, rightX-leftX, width);

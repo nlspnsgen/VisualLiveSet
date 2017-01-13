@@ -7,14 +7,13 @@ class IkedaCell extends Cell {
 	int numberOfRects;
 	ArrayList<ColorRange> colors = new ArrayList<ColorRange>();
 
-	IkedaCell(int leftX, int rightX, int topY, int bottomY, ColorRange initialColor){
+	IkedaCell(int leftX, int rightX, int topY, int bottomY){
 		this.leftX = leftX;
 		this.rightX = rightX;
 		this.topY = topY;
 		this.bottomY = bottomY;
-		this.rectHeight = 30;
+		this.rectHeight = 70;
 		this.numberOfRects = 4;
-		colors.add(initialColor);
 	}
 
 	public void display(){
@@ -22,7 +21,7 @@ class IkedaCell extends Cell {
 		for (int i = 0; i< numberOfRects; i++){
 			int colorIndex = (int) random(colors.size());
 			fill(colors.get(colorIndex).getColor());
-			rect(leftX, bottomY - topY + random(bottomY - topY), rightX - leftX, random(rectHeight));
+			rect(leftX, bottomY - topY + random(topY - bottomY), rightX - leftX, random(rectHeight));
 		}
 	}
 	public void setColors(ColorRange... c){

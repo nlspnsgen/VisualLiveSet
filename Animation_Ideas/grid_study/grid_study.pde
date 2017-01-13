@@ -13,30 +13,38 @@ CircleCell circleCell;
 ParametricCell parametricCell;
 BlackCrossCell blackCrossCell;
 RingCell ringCell;
+IkedaCell ikedaCell;
 
 void setup(){
-	size(600,600);
+	fullScreen();
 	MidiBus.list();
 	myBus = new MidiBus(this, 1, 1);
 	circleCell = new CircleCell(0, width/2, 0, height/2, 50, red);
 	parametricCell = new ParametricCell(width/2, width, 0, height/2);
-	blackCrossCell = new BlackCrossCell(0, width/2, height/2, height);
-	ringCell = new RingCell(0, width, 0, height);
-	
+	blackCrossCell = new BlackCrossCell(0, width, 0, height);
+	ringCell = new RingCell(0, width, 0, height, true);
+	ikedaCell = new IkedaCell(0, width, 0, height);
+	ikedaCell.setColors(black, red, white);
 }
 
 void draw(){
 	background(white.getColor());
-	ringCell.display();
+	//blackCrossCell.display();
+	// blackCrossCell.animate();
+	if (toggle){
+		ikedaCell.display();
+	} else {
+		ikedaCell.display();
+		//blackCrossCell.animate();
+	}
+	//ringCell.display();
 	// circleCell.display();	
 	// parametricCell.display();
-	// blackCrossCell.display();
 	// circleCell.move();
-	// blackCrossCell.animate();
 }
 
 void mouseClicked(){
-	blackCrossCell.reset();
+	//ringCell.reverseAnimation();
 
 	toggle = !toggle;
 }

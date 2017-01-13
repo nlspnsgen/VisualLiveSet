@@ -1,9 +1,9 @@
 class RingCollection{
 	ArrayList<Ring> rings = new ArrayList<Ring>();
-	int spaceBetweenRings;
+	int speed;
 
-	RingCollection(int spaceBetweenRings){
-		this.spaceBetweenRings = spaceBetweenRings;
+	RingCollection(int speed){
+		this.speed = speed;
 	}
 
 	void animateForward(){
@@ -11,11 +11,15 @@ class RingCollection{
 		while(it.hasNext()){
 			Ring ring = it.next();
 			ring.display();
-			ring.expand(5);
+			ring.expand(speed);
 			if(ring.isDead()){
 				it.remove();
 			}
 		}
+	}
+
+	void dropAll(){
+		rings.clear();
 	}
 
 	void animateBackward(){
@@ -23,7 +27,7 @@ class RingCollection{
 		while(it.hasNext()){
 			Ring ring = it.next();
 			ring.display();
-			ring.expand(-5);
+			ring.expand(-speed);
 
 			if(ring.isDead()){
 				println("removing ring");

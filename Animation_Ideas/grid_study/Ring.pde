@@ -40,8 +40,7 @@ class Ring{
 	boolean isDead(){
 		int maxWidth = ((rightX-leftX)*2);
 		int maxHeight = ((bottomY - topY)*2);
-
-		if ((diameter > maxWidth) || (diameter > maxHeight) || (diameter < 0)){
+		if ((diameter > maxWidth) || (diameter < 0)){
 			return true;
 		}
 		else return false;

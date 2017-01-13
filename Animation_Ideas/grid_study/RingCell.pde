@@ -9,8 +9,9 @@ class RingCell extends Cell{
 	int spaceBetweenRings;
 	ColorRange colorOfRingToBeAdded = blue;
 	int iterator;
+	boolean animationDirection;
 
-	RingCell(int leftX, int rightX, int topY, int bottomY){
+	RingCell(int leftX, int rightX, int topY, int bottomY, boolean animationDirection){
 			this.leftX = leftX;
 			this.rightX = rightX;
 			this.topY = topY;
@@ -18,11 +19,13 @@ class RingCell extends Cell{
 			this.diameter = 10;
 			this.circleWidth = 10;
 			this.spaceBetweenRings = 0;
+			this.animationDirection = animationDirection;
 			iterator = 0;
 	}
 
 	void display(){
-		animateForward();
+		if (animationDirection) animateForward();
+		else animateBackward();
 	}
 
 	void animateForward(){
@@ -31,8 +34,16 @@ class RingCell extends Cell{
 	}
 
 	void animateBackward(){
-		addRingToCollection((rightX-leftX)*2);
+		addRingToCollection((rightX-leftX)+(rightX-leftX));
 		ringCollection.animateBackward();
+	}
+
+	void reverseAnimation(){
+		animationDirection = !animationDirection;
+	}
+
+	void restartCircles(){
+		ringCollection.dropAll();
 	}
 
 	void addRingToCollection(int initialDiameter){
@@ -51,7 +62,7 @@ class RingCell extends Cell{
 		if(iterator > 2) iterator = 0;
 		iterator++;
 	}
-	
+
 	void setColors(ColorRange... c){
 	}
 }
