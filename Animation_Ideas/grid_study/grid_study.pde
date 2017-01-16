@@ -14,6 +14,7 @@ ParametricCell parametricCell;
 BlackCrossCell blackCrossCell;
 RingCell ringCell;
 IkedaCell ikedaCell;
+RaindropCell raindropCell;
 
 void setup(){
 	fullScreen();
@@ -23,8 +24,10 @@ void setup(){
 	parametricCell = new ParametricCell(width/2, width, 0, height/2);
 	blackCrossCell = new BlackCrossCell(0, width, 0, height);
 	ringCell = new RingCell(0, width, 0, height, true);
-	ikedaCell = new IkedaCell(0, width, 0, height);
+	ikedaCell = new IkedaCell(0, width, 0, height, 10);
 	ikedaCell.setColors(black, red, white);
+	raindropCell = new RaindropCell(0, width, 0, height, 200);
+	raindropCell.setColors(black, red, blue);
 }
 
 void draw(){
@@ -32,9 +35,9 @@ void draw(){
 	//blackCrossCell.display();
 	// blackCrossCell.animate();
 	if (toggle){
-		ikedaCell.display();
+		raindropCell.display();
 	} else {
-		ikedaCell.display();
+		ringCell.display();
 		//blackCrossCell.animate();
 	}
 	//ringCell.display();
